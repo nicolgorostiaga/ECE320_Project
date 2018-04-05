@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
-// Date        : Thu Apr  5 17:49:28 2018
+// Date        : Thu Apr  5 18:20:41 2018
 // Host        : Alex-PC running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sources_1/ip/blk_mem_ROM/blk_mem_ROM_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top blk_mem_ROM -prefix
+//               blk_mem_ROM_ blk_mem_ROM_sim_netlist.v
 // Design      : blk_mem_ROM
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -186,7 +186,6 @@ module blk_mem_ROM
         .web(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module blk_mem_ROM_blk_mem_gen_generic_cstr
    (douta,
     clka,
@@ -205,7 +204,6 @@ module blk_mem_ROM_blk_mem_gen_generic_cstr
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module blk_mem_ROM_blk_mem_gen_prim_width
    (douta,
     clka,
@@ -224,7 +222,6 @@ module blk_mem_ROM_blk_mem_gen_prim_width
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
 module blk_mem_ROM_blk_mem_gen_prim_wrapper_init
    (douta,
     clka,
@@ -278,7 +275,7 @@ module blk_mem_ROM_blk_mem_gen_prim_wrapper_init
     .INITP_06(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_07(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_00(256'h0200000303030303020000020000010002000001000001020200000000000000),
-    .INIT_01(256'h0000000000000000000000000000000000000000000000000102010300000303),
+    .INIT_01(256'h0000000000000000000000000000000000000000000000000102020300000303),
     .INIT_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_04(256'h0000000000000000000000000000000000000000000000000000000000000000),
@@ -391,7 +388,6 @@ module blk_mem_ROM_blk_mem_gen_prim_wrapper_init
         .WEBWE({1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module blk_mem_ROM_blk_mem_gen_top
    (douta,
     clka,
@@ -434,7 +430,7 @@ endmodule
 (* C_USE_URAM = "0" *) (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) 
 (* C_WRITE_DEPTH_A = "256" *) (* C_WRITE_DEPTH_B = "256" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) 
 (* C_WRITE_MODE_B = "WRITE_FIRST" *) (* C_WRITE_WIDTH_A = "8" *) (* C_WRITE_WIDTH_B = "8" *) 
-(* C_XDEVICEFAMILY = "artix7" *) (* ORIG_REF_NAME = "blk_mem_gen_v8_4_1" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* C_XDEVICEFAMILY = "artix7" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module blk_mem_ROM_blk_mem_gen_v8_4_1
    (clka,
     rsta,
@@ -632,7 +628,6 @@ module blk_mem_ROM_blk_mem_gen_v8_4_1
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_1_synth" *) 
 module blk_mem_ROM_blk_mem_gen_v8_4_1_synth
    (douta,
     clka,

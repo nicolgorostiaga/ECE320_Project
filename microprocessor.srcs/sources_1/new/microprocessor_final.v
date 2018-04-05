@@ -213,6 +213,7 @@ ram_data_out, ram_data_in, ram_write, state);
                     4'b1111: R3 <= R3;
                     default: begin R0 <= R0; R1 <= R1; R2 <= R2; R3 <= R3; end
                 endcase
+                state <= fetch;
             end
             endcase
         end
