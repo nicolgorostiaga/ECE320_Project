@@ -60,9 +60,9 @@ ram_data_out, ram_data_in, ram_write, state);
                 //execute_MOV_RStoRD = 6'd9,
                 
                 // Ram write: M[address} <- RS
-                //execute_MOV_RStoM = 6'd10,
-                //execute_MOV_RStoM2 = 6'd11,
-                //execute_MOV_RStoM3 = 6'd12,
+                execute_MOV_RStoM = 6'd10,
+                execute_MOV_RStoM2 = 6'd11,
+                execute_MOV_RStoM3 = 6'd12,
                 
                 // Move a constant into a register R0 through R3
               execute_MOV_DatatoRD = 6'd13,
@@ -120,7 +120,11 @@ ram_data_out, ram_data_in, ram_write, state);
                 rom_address <= PC; // With rom_data stored in IR, new rom_address can be pointed to
                 case (IR[7:4])
                     4'h0: state <= execute_NOP;
-                    
+                    4'h7: 
+                     begin
+                        state = execute_MOV_RStoM;
+                        PC <= PC + 1;
+                     end
                     4'h8: begin
                         state <= execute_MOV_DatatoRD;
                         PC <= PC + 1; // Increment PC to next instruction, but rom_address is left pointing to operand
@@ -160,6 +164,31 @@ ram_data_out, ram_data_in, ram_write, state);
             end
             
             /////////////////////////////////////////////////////////////////////
+ 	   // Move value from the registers to the RAM
+            execute_MOV_RStoM: 
+              begin
+                  state <= execute_MOV_RStoM2;
+              end
+            execute_MOV_RStoM2:
+               begin
+               ram_address <= rom_data;
+               ram_write <= 1;
+               rom_address <= PC;
+               state <= execute_MOV_RStoM3;
+                   case(IR[1:0])
+                       0: ram_data_in <= R0;
+                       1: ram_data_in <= R1;
+                       2: ram_data_in <= R2;
+                       3: ram_data_in <= R3;
+                       default: ram_data_in <= ram_data_in;
+                    endcase
+                end
+            execute_MOV_RStoM3:
+                 begin
+                 ram_write <= 0;
+                 state <= fetch;
+                 end
+           //////////////////////////////////////////////////////////////////////////////
             
             endcase
         end
