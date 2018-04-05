@@ -1,0 +1,9 @@
+0.6
+2016.4
+Dec 14 2016
+22:58:16
+E:/microprocessor/microprocessor.sim/sim_1/behav/glbl.v,1481753704,verilog,,,,glbl,,,,,,,,
+E:/microprocessor/microprocessor.srcs/sim_1/new/microprocessor_tb.v,1522869800,verilog,,,,microprocessor_tb,,,,,,,,
+E:/microprocessor/microprocessor.srcs/sources_1/ip/blk_mem_RAM/sim/blk_mem_RAM.v,1522867028,verilog,,,,blk_mem_RAM,,,,,,,,
+E:/microprocessor/microprocessor.srcs/sources_1/ip/blk_mem_ROM/sim/blk_mem_ROM.v,1522870202,verilog,,,,blk_mem_ROM,,,,,,,,
+E:/microprocessor/microprocessor.srcs/sources_1/new/microprocessor_final.v,1522870194,verilog,,,,microprocessor_final,,,,,,,,
