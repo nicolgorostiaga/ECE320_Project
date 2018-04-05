@@ -48,16 +48,16 @@ ram_data_out, ram_data_in, ram_write, state);
       .douta(rom_data)  // output wire [7 : 0] douta
     );
     
-    parameter reset_cpu = 6'd0,
-              fetch = 6'd1,
-              decode = 6'd2,
-              execute_NOP = 6'd3,
+    parameter   reset_cpu = 6'd0,
+                fetch = 6'd1,
+                decode = 6'd2,
+                execute_NOP = 6'd3,
                 //execute_ADD = 6'd4,
                 //execute_SUB = 6'd5,
                 //execute_NOT = 6'd6,
                 //execute_AND = 6'd7,
                 //execute_OR = 6'd8,
-                //execute_MOV_RStoRD = 6'd9,
+                execute_MOV_RStoRD = 6'd9,
                 
                 // Ram write: M[address} <- RS
                 execute_MOV_RStoM = 6'd10,
@@ -65,8 +65,8 @@ ram_data_out, ram_data_in, ram_write, state);
                 execute_MOV_RStoM3 = 6'd12,
                 
                 // Move a constant into a register R0 through R3
-              execute_MOV_DatatoRD = 6'd13,
-              execute_MOV_DatatoRD2 = 6'd14;
+                execute_MOV_DatatoRD = 6'd13,
+                execute_MOV_DatatoRD2 = 6'd14;
                 
                 // Ram read: RD <- M[address]
                 //execute_MOV_MtoRD = 6'd15,
@@ -120,6 +120,7 @@ ram_data_out, ram_data_in, ram_write, state);
                 rom_address <= PC; // With rom_data stored in IR, new rom_address can be pointed to
                 case (IR[7:4])
                     4'h0: state <= execute_NOP;
+                    4'h6: state <= execute_MOV_RStoRD;
                     4'h7: 
                      begin
                         state = execute_MOV_RStoM;
@@ -136,14 +137,14 @@ ram_data_out, ram_data_in, ram_write, state);
             
             /////////////////////////////////////////////////////////////////////
             
-            execute_NOP: begin // Perform no operations
+            execute_NOP: begin // Perform no operations (Operation 0000 or 0)
                 rom_address <= PC; // Make ROM data available on next clock cycle in fetch state
                 state <= fetch;
             end
             
             /////////////////////////////////////////////////////////////////////
             
-            execute_MOV_DatatoRD: begin
+            execute_MOV_DatatoRD: begin // (Operation 1000 or 8)
                 rom_address <= PC; // rom_address updated for next fetch state
                                    // In next clock cycle, rom_address will be updated
                                    // rom_data won't update until positive clock edge
@@ -164,7 +165,8 @@ ram_data_out, ram_data_in, ram_write, state);
             end
             
             /////////////////////////////////////////////////////////////////////
- 	   // Move value from the registers to the RAM
+            
+ 	        // Move value from the registers to the RAM (Operation 0111 or 7)
             execute_MOV_RStoM: 
               begin
                   state <= execute_MOV_RStoM2;
@@ -188,8 +190,30 @@ ram_data_out, ram_data_in, ram_write, state);
                  ram_write <= 0;
                  state <= fetch;
                  end
-           //////////////////////////////////////////////////////////////////////////////
-            
+            //////////////////////////////////////////////////////////////////////////////
+           
+            // Move data from one register to another (Operation 0110 or 6)
+            execute_MOV_RStoRD: begin
+                case (IR[3:0])
+                    4'b0000: R0 <= R0;
+                    4'b0001: R0 <= R1;
+                    4'b0010: R0 <= R2;
+                    4'b0011: R0 <= R3;
+                    4'b0100: R1 <= R0;
+                    4'b0101: R1 <= R1;
+                    4'b0110: R1 <= R2;
+                    4'b0111: R1 <= R3;
+                    4'b1000: R2 <= R0;
+                    4'b1001: R2 <= R1;
+                    4'b1010: R2 <= R2;
+                    4'b1011: R2 <= R3;
+                    4'b1100: R3 <= R0;
+                    4'b1101: R3 <= R1;
+                    4'b1110: R3 <= R2;
+                    4'b1111: R3 <= R3;
+                    default: begin R0 <= R0; R1 <= R1; R2 <= R2; R3 <= R3; end
+                endcase
+            end
             endcase
         end
     end   
