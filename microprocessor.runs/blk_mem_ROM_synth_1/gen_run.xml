@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="blk_mem_ROM_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1522870781">
-  <File Type="RDS-PROPCONSTRS" Name="blk_mem_ROM_drc_synth.rpt"/>
   <File Type="PA-TCL" Name="blk_mem_ROM.tcl"/>
   <File Type="RDS-RDS" Name="blk_mem_ROM.vds"/>
-  <File Type="RDS-UTIL" Name="blk_mem_ROM_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="blk_mem_ROM_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="blk_mem_ROM.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="blk_mem_ROM_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="blk_mem_ROM_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/blk_mem_ROM">
     <File Path="$PSRCDIR/sources_1/ip/blk_mem_ROM/blk_mem_ROM.xci">
       <FileInfo>
@@ -35,9 +30,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>
