@@ -252,7 +252,7 @@ ram_data_out, ram_data_in, ram_write, state);
             end
             
             /////////////////////////////////////////////////////////////////////
-            execute_ADD: begin    //perform an adding operation
+                execute_ADD: begin    //perform an adding (Operation 0001 or 1)
                 rom_address <= PC;
                 case(IR[3:0])
                     0: R0 <= R0 + R0;
