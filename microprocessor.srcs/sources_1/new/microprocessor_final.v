@@ -53,7 +53,7 @@ ram_data_out, ram_data_in, ram_write, state);
                 decode = 6'd2,
                 execute_NOP = 6'd3,
                 execute_ADD = 6'd4,
-                //execute_SUB = 6'd5,
+                execute_SUB = 6'd5,
                 //execute_NOT = 6'd6,
                 //execute_AND = 6'd7,
                 //execute_OR = 6'd8,
