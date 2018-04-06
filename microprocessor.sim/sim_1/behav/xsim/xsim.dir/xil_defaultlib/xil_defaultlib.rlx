@@ -1,9 +1,0 @@
-0.6
-2017.4
-Dec 15 2017
-21:07:18
-D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
-D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sim_1/new/microprocessor_tb.v,1522972065,verilog,,,,microprocessor_tb,,,,,,,,
-D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sources_1/ip/blk_mem_RAM/sim/blk_mem_RAM.v,1522972817,verilog,,D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sources_1/new/microprocessor_final.v,,blk_mem_RAM,,,,,,,,
-D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sources_1/ip/blk_mem_ROM/sim/blk_mem_ROM.v,1522973616,verilog,,D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sources_1/ip/blk_mem_RAM/sim/blk_mem_RAM.v,,blk_mem_ROM,,,,,,,,
-D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sources_1/new/microprocessor_final.v,1522973092,verilog,,D:/Alex/Documents/GitHub/ECE320_Project/microprocessor.srcs/sim_1/new/microprocessor_tb.v,,microprocessor_final,,,,,,,,
