@@ -89,7 +89,6 @@ ram_data_out, ram_data_in, ram_write, state);
             rom_address <= 0;
             ram_address <= 0;
             ram_write <= 0;
-            IR <= 0;
             PC <= 0;
             state <= reset_cpu;
         end
@@ -101,7 +100,6 @@ ram_data_out, ram_data_in, ram_write, state);
                 rom_address <= 0;
                 ram_address <= 0;
                 ram_write <= 0;
-                IR <= 0;
                 PC <= 0;
                 state <= fetch;
             end
@@ -120,8 +118,8 @@ ram_data_out, ram_data_in, ram_write, state);
                 rom_address <= PC; // With rom_data stored in IR, new rom_address can be pointed to
                 case (IR[7:4])
                     4'h0: state <= execute_NOP;
+                    4'h1: state <= execute_ADD;
                     4'h6: state <= execute_MOV_RStoRD;
-                    4'h7: 
                     begin
                         state = execute_MOV_RStoM;
                         PC <= PC + 1; // Increment PC to next instruction, but rom_address is left pointing to operand
