@@ -36,11 +36,11 @@ module microprocessor_tb(
     ram_data_out, ram_data_in, ram_write, state);
     
     initial begin
-    reset = 0; clock = 0; #5;
-    reset = 1; #20;
+    reset = 0; clock = 0; #3;
+    reset = 1; #2;
     reset = 0;
-    repeat (50) begin
-    clock = ~clock; #25;
+    repeat (80) begin
+    clock = ~clock; #5;
     end
     $finish;
     end
