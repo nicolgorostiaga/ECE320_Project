@@ -120,7 +120,7 @@ ram_data_out, ram_data_in, ram_write, state);
                     4'h0: state <= execute_NOP;
                     4'h1: state <= execute_ADD;
                     4'h6: state <= execute_MOV_RStoRD;
-                    begin
+                    4'h7: begin
                         state = execute_MOV_RStoM;
                         PC <= PC + 1; // Increment PC to next instruction, but rom_address is left pointing to operand
                                       // Perform this step on all 2-byte instructions
